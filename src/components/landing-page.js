@@ -13,7 +13,7 @@ export function LandingPage(props) {
     return (
         <div className="home">
             <h2 className="landing-title">Welcome to Traffics Cool</h2>
-            <p className="landing-info">It's the hip way to learn traffic signage. We'll present an image of a common traffic sign, and you can show us your knowledge! Log in to begin.</p>
+            <p className="landing-info">It is the hip way to learn traffic signage. We will present an image of a common traffic sign, and you can show us your knowledge! Log in to begin.</p>
             <LoginForm />
             <Link to="/register">Register</Link>
         </div>
