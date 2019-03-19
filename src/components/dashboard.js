@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {getSign} from '../actions/auth.js';
-import { stat } from 'fs';
 import Questionscreen from './question-screen.js';
 
 export class Dashboard extends React.Component {
@@ -16,19 +15,19 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-username">
                     Hello {this.props.username}!
                 </div>
-                <Questionscreen sign={this.props.currentSign}/>
+                <Questionscreen sign={this.props.sign}/>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
-    const {currentUser, error} = state.auth;
+    const { authToken, error} = state.auth;
     return {
         username: state.auth.currentUser.username,
-        name: `${currentUser.firstName} ${currentUser.lastName}`,
         sign: state.auth.currentSign,
-        authToken: state.auth.authToken
+        authToken: authToken,
+        error: error
     };
 };
 

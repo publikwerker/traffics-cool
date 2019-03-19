@@ -1,6 +1,5 @@
 import jwtDecode from 'jwt-decode';
 import {SubmissionError} from 'redux-form';
-import { connect } from 'react-redux';
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
@@ -24,7 +23,7 @@ export const signRequest = (authToken) => ({
 
 export const SIGN_SUCCESS = 'SIGN_SUCCESS';
 export const signSuccess = (sign) => ({
-    type: SIGN_REQUEST,
+    type: SIGN_SUCCESS,
     sign
 });
 
@@ -79,17 +78,17 @@ export const getSign = (authToken) => dispatch => {
         .then(res => res.json())
         .then(({sign}) => {
             console.log(sign);
-            signSuccess(sign, dispatch)})
-        .catch(err => {
-            dispatch(authError(err));
-            // Could not authenticate, so return a SubmissionError for Redux
-            // Form
-            return Promise.reject(
-                new SubmissionError({
-                    _error: err
-                })
-            );
-        })
+            dispatch(signSuccess(sign))})
+        // .catch(err => {
+        //     dispatch(authError(err));
+        //     // Could not authenticate, so return a SubmissionError for Redux
+        //     // Form
+        //     return Promise.reject(
+        //         new SubmissionError({
+        //             _error: err
+        //         })
+        //     );
+        // })
     )
 }
 

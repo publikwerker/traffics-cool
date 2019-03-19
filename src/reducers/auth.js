@@ -43,18 +43,15 @@ export default function reducer(state = initialState, action) {
         });
     } else if (action.type === SIGN_REQUEST) {
         return Object.assign({}, state, {
-            loading: true,
             error: null,
             authToken: action.authToken
         });
     } else if (action.type === SIGN_SUCCESS) {
         return Object.assign({}, state, {
-            loading: false,
             currentSign: action.sign
         });
     } else if (action.type === SIGN_ERROR) {
         return Object.assign({}, state, {
-            loading: false,
             error: action.error
         });
     }
