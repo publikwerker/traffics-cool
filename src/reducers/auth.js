@@ -3,7 +3,10 @@ import {
     CLEAR_AUTH,
     AUTH_REQUEST,
     AUTH_SUCCESS,
-    AUTH_ERROR
+    AUTH_ERROR,
+    SIGN_REQUEST,
+    SIGN_SUCCESS,
+    SIGN_ERROR
 } from '../actions/auth';
 
 const initialState = {
@@ -34,6 +37,22 @@ export default function reducer(state = initialState, action) {
             currentUser: action.currentUser
         });
     } else if (action.type === AUTH_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error
+        });
+    } else if (action.type === SIGN_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: null,
+            authToken: action.authToken
+        });
+    } else if (action.type === SIGN_SUCCESS) {
+        return Object.assign({}, state, {
+            loading: false,
+            currentSign: action.sign
+        });
+    } else if (action.type === SIGN_ERROR) {
         return Object.assign({}, state, {
             loading: false,
             error: action.error

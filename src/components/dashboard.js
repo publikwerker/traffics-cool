@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+import {getSign} from '../actions/auth.js';
 import { stat } from 'fs';
 import Questionscreen from './question-screen.js';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchProtectedData());
+        this.props.dispatch(getSign(this.props.authToken));
     }
 
     render() {
@@ -16,10 +16,7 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-username">
                     Hello {this.props.username}!
                 </div>
-                <Questionscreen />
-                <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
-                </div>
+                <Questionscreen sign={this.props.currentSign}/>
             </div>
         );
     }
@@ -30,7 +27,8 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
-        protectedData: state.protectedData.data
+        sign: state.auth.currentSign,
+        authToken: state.auth.authToken
     };
 };
 

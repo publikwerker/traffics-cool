@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import {SubmissionError} from 'redux-form';
-
+import { connect } from 'react-redux';
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
@@ -14,6 +14,24 @@ export const setAuthToken = authToken => ({
 export const CLEAR_AUTH = 'CLEAR_AUTH';
 export const clearAuth = () => ({
     type: CLEAR_AUTH
+});
+
+export const SIGN_REQUEST = 'SIGN_REQUEST';
+export const signRequest = (authToken) => ({
+    type: SIGN_REQUEST,
+    authToken
+});
+
+export const SIGN_SUCCESS = 'SIGN_SUCCESS';
+export const signSuccess = (sign) => ({
+    type: SIGN_REQUEST,
+    sign
+});
+
+export const SIGN_ERROR = 'SIGN_ERROR';
+export const signError = error => ({
+    type: SIGN_ERROR,
+    error
 });
 
 export const AUTH_REQUEST = 'AUTH_REQUEST';
@@ -41,6 +59,39 @@ const storeAuthInfo = (authToken, dispatch) => {
     dispatch(authSuccess(decodedToken.user));
     saveAuthToken(authToken);
 };
+
+export const getSign = (authToken) => dispatch => {
+    dispatch(signRequest(authToken));
+    return (
+        fetch(`${API_BASE_URL}/signs`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+        })
+        // Reject any requests which don't return a 200 status, creating
+        // errors which follow a consistent format
+        .then(res => normalizeResponseErrors(res))
+        .then(res => {
+            console.log(res);
+            return res})
+        .then(res => res.json())
+        .then(({sign}) => {
+            console.log(sign);
+            signSuccess(sign, dispatch)})
+        .catch(err => {
+            dispatch(authError(err));
+            // Could not authenticate, so return a SubmissionError for Redux
+            // Form
+            return Promise.reject(
+                new SubmissionError({
+                    _error: err
+                })
+            );
+        })
+    )
+}
 
 export const login = (username, password) => dispatch => {
     dispatch(authRequest());
