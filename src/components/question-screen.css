@@ -8,3 +8,11 @@
   border-radius: 10px;
   margin-bottom: 20px;
 }
+img{
+  max-width: 75%;
+}
+label, input, button {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
