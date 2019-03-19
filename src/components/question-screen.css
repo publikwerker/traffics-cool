@@ -1,0 +1,10 @@
+.next-button {
+  background-color: white;
+  color: black;
+  padding: 2px 20px;
+  text-align: center;
+  font-size: calc(4px + 2vmin);
+  border: solid 1pt black;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}

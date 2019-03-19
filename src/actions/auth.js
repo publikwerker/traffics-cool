@@ -62,7 +62,7 @@ const storeAuthInfo = (authToken, dispatch) => {
 export const getSign = (authToken) => dispatch => {
     dispatch(signRequest(authToken));
     return (
-        fetch(`${API_BASE_URL}/signs`, {
+        fetch(`${API_BASE_URL}/users/question`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
