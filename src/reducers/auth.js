@@ -4,6 +4,9 @@ import {
     AUTH_REQUEST,
     AUTH_SUCCESS,
     AUTH_ERROR,
+    GUESS_ERROR,
+    GUESS_REQUEST,
+    GUESS_SUCCESS,
     SIGN_REQUEST,
     SIGN_SUCCESS,
     SIGN_ERROR
@@ -43,16 +46,34 @@ export default function reducer(state = initialState, action) {
         });
     } else if (action.type === SIGN_REQUEST) {
         return Object.assign({}, state, {
+            loading: false,
             error: null,
             authToken: action.authToken
         });
     } else if (action.type === SIGN_SUCCESS) {
         return Object.assign({}, state, {
+            loading: false,
             currentSign: action.sign
         });
     } else if (action.type === SIGN_ERROR) {
         return Object.assign({}, state, {
+            loading: false,
             error: action.error
+        });
+    } else if (action.type === GUESS_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    } else if (action.type === GUESS_SUCCESS) {
+        return Object.assign({}, state, {
+            loading: false,
+            correct: action.correct,
+            answer: action.answer
+        });
+    } else if (action.type === GUESS_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: action.error,
         });
     }
     return state;

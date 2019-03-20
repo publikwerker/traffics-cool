@@ -3,12 +3,14 @@ import {reducer as formReducer} from 'redux-form';
 import thunk from 'redux-thunk';
 import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
+import questionReducer from './components/question-screen.js';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 const store = createStore(
     combineReducers({
         form: formReducer,
-        auth: authReducer
+        auth: authReducer,
+        question: questionReducer
     }),
     applyMiddleware(thunk)
 );

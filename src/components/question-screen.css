@@ -1,4 +1,4 @@
-.next-button {
+.submit-button {
   background-color: white;
   color: black;
   padding: 2px 20px;
@@ -12,7 +12,7 @@ img{
   max-width: 75%;
 }
 label, input, button {
-  display: inline-block;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }

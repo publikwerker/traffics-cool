@@ -50,6 +50,24 @@ export const authError = error => ({
     error
 });
 
+export const GUESS_REQUEST = 'GUESS_REQUEST';
+export const guessRequest = () => ({
+    type: GUESS_REQUEST
+});
+
+export const GUESS_SUCCESS = 'GUESS_SUCCESS';
+export const guessSuccess = (answer, correct) => ({
+    type: GUESS_SUCCESS,
+    correct,
+    answer
+});
+
+export const GUESS_ERROR = 'GUESS_ERROR';
+export const guessError = error => ({
+    type: GUESS_ERROR,
+    error
+});
+
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
@@ -148,5 +166,32 @@ export const refreshAuthToken = () => (dispatch, getState) => {
             dispatch(authError(err));
             dispatch(clearAuth());
             clearAuthToken(authToken);
+        });
+};
+
+export const submitGuess = (guess, authToken) => dispatch => {
+    dispatch(guessRequest());
+    return fetch(`${API_BASE_URL}/users/guess`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${authToken}`
+        },
+        body: JSON.stringify({guess})
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(({answer, correct}) => dispatch(guessSuccess(answer, correct)))
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                // Convert ValidationErrors into SubmissionErrors for Redux Form
+                dispatch(guessError());
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
         });
 };
