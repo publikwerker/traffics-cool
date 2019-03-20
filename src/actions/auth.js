@@ -97,16 +97,9 @@ export const getSign = (authToken) => dispatch => {
         .then(({sign}) => {
             console.log(sign);
             dispatch(signSuccess(sign))})
-        // .catch(err => {
-        //     dispatch(authError(err));
-        //     // Could not authenticate, so return a SubmissionError for Redux
-        //     // Form
-        //     return Promise.reject(
-        //         new SubmissionError({
-        //             _error: err
-        //         })
-        //     );
-        // })
+        .catch(err => {
+             dispatch(authError(err));
+        })
     )
 }
 
@@ -178,20 +171,11 @@ export const submitGuess = (guess, authToken) => dispatch => {
             Authorization: `Bearer ${authToken}`
         },
         body: JSON.stringify({guess})
-    })
+        })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(({answer, correct}) => dispatch(guessSuccess(answer, correct)))
         .catch(err => {
-            const {reason, message, location} = err;
-            if (reason === 'ValidationError') {
-                // Convert ValidationErrors into SubmissionErrors for Redux Form
-                dispatch(guessError());
-                return Promise.reject(
-                    new SubmissionError({
-                        [location]: message
-                    })
-                );
-            }
+                dispatch(guessError(err));
         });
 };

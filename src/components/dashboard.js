@@ -4,6 +4,7 @@ import requiresLogin from './requires-login';
 import {getSign} from '../actions/auth.js';
 import Questionscreen from './question-screen.js';
 import { submitGuess } from '../actions/auth.js';
+import AnswerScreen from './answer-screen.js';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -13,7 +14,26 @@ export class Dashboard extends React.Component {
     handleGuess= (e) => {
         e.preventDefault();
         console.log(this.props.guess);
-        return this.props.dispatch(submitGuess(this.props.guess, this.props.authToken));
+        this.props.dispatch(submitGuess(this.props.guess, this.props.authToken));
+        return this.props.history.push(`/answer`);
+    }
+
+    questionOrAnswer(){
+        console.log('question or answer ran');
+        if(this.props.correct === null){
+            return (
+                <div>
+                    nothing here
+                    <AnswerScreen correct={this.props.correct} answer={this.props.answer} />
+                </div>
+            )
+        } else {
+            return (
+                <Questionscreen 
+                    onClick={this.handleGuess} 
+                    sign={this.props.sign}/>
+            )
+        }
     }
 
     render() {
@@ -22,7 +42,11 @@ export class Dashboard extends React.Component {
                 <div className="dashboard-username">
                     Hello {this.props.username}!
                 </div>
-                <Questionscreen onClick={this.handleGuess} sign={this.props.sign}/>
+                <div>
+                <Questionscreen 
+                    onClick={this.handleGuess} 
+                    sign={this.props.sign}/>
+                </div>
             </div>
         );
     }
@@ -41,7 +65,9 @@ const mapStateToProps = state => {
         sign: state.auth.currentSign,
         authToken: authToken,
         error: error,
-        guess: subGuess
+        guess: subGuess,
+        answer: state.auth.answer,
+        correct: state.auth.correct
     };
 };
 
