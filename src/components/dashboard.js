@@ -5,6 +5,7 @@ import { getSign } from '../actions/auth.js';
 import Questionscreen from './question-screen.js';
 import { submitGuess } from '../actions/auth.js';
 import AnswerScreen from './answer-screen.js';
+import { ProgressScreen } from './progress-screen.js';
 
 export class Dashboard extends React.Component {
   componentDidMount() {
@@ -17,29 +18,21 @@ export class Dashboard extends React.Component {
       .then(() => this.props.history.push('/answer'));
   }
 
-  questionOrAnswer() {
-    if (this.props.correct === null) {
-      return (
-        <div>
-          <AnswerScreen
-            correct={this.props.correct}
-            answer={this.props.answer}
-            sign={this.props.sign}
-          />
-        </div>
-      )
-    } else {
-      return (
-        <Questionscreen
-          onClick={this.handleGuess}
-          sign={this.props.sign} />
-      )
-    }
-  }
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   render() {
     return (
       <div className="dashboard">
+        <div>
+            <ProgressScreen show={this.props.show} handleClose={this.hideModal} />
+            <button type="button" onClick={this.showModal}>Progress</button>
+        </div>
         <div className="dashboard-username">
           Hello {this.props.username}!
                 </div>
@@ -68,7 +61,8 @@ const mapStateToProps = state => {
     error: error,
     guess: subGuess,
     answer: state.auth.answer,
-    correct: state.auth.correct
+    correct: state.auth.correct,
+    show: false
   };
 };
 
