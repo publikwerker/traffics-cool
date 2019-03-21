@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 
 import LoginForm from './login-form';
 
@@ -11,12 +11,12 @@ export function LandingPage(props) {
     }
 
     return (
-        <div className="home">
+        <section className="home">
             <h2 className="landing-title">Welcome to Traffic's Cool</h2>
             <p className="landing-info">The hip way to learn traffic signage. We will present an image of a common traffic sign, and you can show us your knowledge! Log in to begin.</p>
             <LoginForm />
             <Link to="/register">Register</Link>
-        </div>
+        </section>
     );
 }
 

@@ -11,19 +11,19 @@ export class AnswerScreen extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>{this.props.correct ? 'That\'s right' : 'Sorry, that\'s incorrect'}</h3>
-        <img alt="traffic sign" src={this.props.sign} />
+      <section>
+        <h2>{this.props.correct ? 'That\'s right' : 'Sorry, that\'s incorrect'}</h2>
+        <img alt={`A ${this.props.answer} sign`} src={this.props.sign} />
         <p>The correct answer is <strong>{this.props.answer}</strong></p>
-        <button type="submit" className="next-button" onClick={(e) => this.onNext(e)}>Next</button>
-      </div>
+        <button className="next-button" onClick={(e) => this.onNext(e)}>Next</button>
+      </section>
     );
   }
 }
 
 const mapStateToProps = state => {
   let subErr = null;
-  if (state.auth.error){
+  if (state.auth.error) {
     subErr = state.auth.error.message
   }
   return {

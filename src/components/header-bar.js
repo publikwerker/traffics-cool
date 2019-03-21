@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {clearAuth} from '../actions/auth';
-import {clearAuthToken} from '../local-storage';
+import { connect } from 'react-redux';
+import { clearAuth } from '../actions/auth';
+import { clearAuthToken } from '../local-storage';
 import './header-bar.css';
 
 export class HeaderBar extends React.Component {
@@ -19,10 +19,10 @@ export class HeaderBar extends React.Component {
             );
         }
         return (
-            <div className="header-bar">
+            <header className="header-bar">
                 <h1>Traffic's Cool</h1>
                 {logOutButton}
-            </div>
+            </header>
         );
     }
 }

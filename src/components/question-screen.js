@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './question-screen.css';
 import { Field, reduxForm } from 'redux-form';
 import { getSign, submitGuess } from '../actions/auth.js';
+import Input from './input';
 
 export class Questionscreen extends React.Component {
   componentDidMount() {
@@ -24,22 +25,22 @@ export class Questionscreen extends React.Component {
         className="questionReducer"
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >
-        <div>
-          <h3>What is the meaning of this?</h3>
-          <img alt="traffic sign" src={this.props.sign} />
-          <label>Enter your answer:  </label>
+        <fieldset>
+          <legend>What is the meaning of this?</legend>
+          <img alt="An image of a traffic sign" src={this.props.sign} />
           <Field
             name="guess"
-            component="input"
+            component={Input}
+            label="Enter your answer:"
             type="text"
             placeholder="your answer"
           />
-          <button
-            className="submit-button"
-            type="submit"
-            disabled={pristine || submitting}
-          >Submit</button>
-        </div>
+        </fieldset>
+        <button
+          className="submit-button"
+          type="submit"
+          disabled={pristine || submitting}
+        >Submit</button>
       </form>
     );
   }
