@@ -46,17 +46,11 @@ export class App extends React.Component {
                 <HeaderBar />
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
-<<<<<<< HEAD
-                <Route exact path="/answer" component={AnswerScreen} />
-                <Route exact path="/register" component={RegistrationPage} />
-                <Route exact path="/progress" component={ProgressScreen} />
-            </div>
-=======
                 <Route exact path="/answer"
                     component={AnswerScreen} />
                 <Route exact path="/register" component={RegistrationPage} />
+                <Route exact path="/progress" component={ProgressScreen} />
             </main>
->>>>>>> 212df45338314560f3e8a6fa48534495eea7fa32
         );
     }
 }
