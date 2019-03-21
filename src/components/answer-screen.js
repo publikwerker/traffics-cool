@@ -27,7 +27,7 @@ const mapStateToProps = state => {
     subErr = state.auth.error.message
   }
   return {
-    sign: state.auth.currentSign,
+    sign: state.auth.answeredSign,
     answer: state.auth.answer,
     correct: state.auth.correct
   };
