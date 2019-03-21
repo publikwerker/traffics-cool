@@ -23,7 +23,7 @@ export class AnswerScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    sign: state.auth.currentSign,
+    sign: state.auth.answeredSign,
     answer: state.auth.answer,
     correct: state.auth.correct
   };
