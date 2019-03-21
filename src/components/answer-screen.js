@@ -1,17 +1,29 @@
 import React from 'react';
 import './answer-screen.css';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { getSign } from '../actions/auth';
 
 export class AnswerScreen extends React.Component{
+
+  getNext = () => dispatch => {
+    dispatch(getSign());
+  }
   onNext = (e) => {
     e.preventDefault();
     console.log('onNext ran');
+   // this.getNext();
     return this.props.history.push(`/dashboard`);
     }
   
 
   render(){
-       if (this.props.correct === true){
+      if (this.props.error){ 
+        return (
+          <div>
+          {this.props.error}
+          </div>
+        )
+      } else if (this.props.correct === true){
       return (
         <div>
           <h3>That's right</h3>
@@ -30,10 +42,15 @@ export class AnswerScreen extends React.Component{
 }
 
 const mapStateToProps = state => {
+  let subErr = null;
+  if (state.auth.error){
+    subErr = state.auth.error.message
+  }
   return {
       sign: state.auth.currentSign,
       answer: state.auth.answer,
-      correct: state.auth.correct
+      correct: state.auth.correct,
+      error: subErr
   };
 };
 

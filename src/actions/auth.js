@@ -162,7 +162,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
         });
 };
 
-export const submitGuess = (guess, authToken) => dispatch => {
+export const submitGuess = (guess, userId, authToken) => dispatch => {
     dispatch(guessRequest());
     return fetch(`${API_BASE_URL}/users/guess`, {
         method: 'POST',
@@ -170,7 +170,7 @@ export const submitGuess = (guess, authToken) => dispatch => {
             'content-type': 'application/json',
             Authorization: `Bearer ${authToken}`
         },
-        body: JSON.stringify({guess})
+        body: JSON.stringify({guess, userId})
         })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())

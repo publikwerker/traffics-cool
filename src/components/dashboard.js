@@ -14,7 +14,7 @@ export class Dashboard extends React.Component {
     handleGuess= (e) => {
         e.preventDefault();
         console.log(this.props.guess);
-        this.props.dispatch(submitGuess(this.props.guess, this.props.authToken));
+        this.props.dispatch(submitGuess(this.props.guess, this.props.userID, this.props.authToken));
         return this.props.history.push(`/answer`);
     }
 
@@ -67,7 +67,8 @@ const mapStateToProps = state => {
         error: error,
         guess: subGuess,
         answer: state.auth.answer,
-        correct: state.auth.correct
+        correct: state.auth.correct,
+        userID: state.auth.currentUser.id
     };
 };
 
