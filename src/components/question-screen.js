@@ -27,7 +27,7 @@ export class Questionscreen extends React.Component {
       >
         <fieldset>
           <legend>What is the meaning of this?</legend>
-          <img alt="An image of a traffic sign" src={this.props.sign} />
+          <img alt="traffic sign" src={this.props.sign} />
           <Field
             name="guess"
             component={Input}
