@@ -6,15 +6,12 @@ import Questionscreen from './question-screen.js';
 export class Dashboard extends React.Component {
   render() {
     return (
-      <div className="dashboard">
-        <div className="dashboard-username">
+      <section className="dashboard">
+        <header className="dashboard-username">
           Hello {this.props.username}!
-        </div>
-        <div>
-          <Questionscreen
-          />
-        </div>
-      </div>
+        </header>
+        <Questionscreen />
+      </section>
     );
   }
 }

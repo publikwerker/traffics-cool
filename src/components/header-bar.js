@@ -20,12 +20,16 @@ export class HeaderBar extends React.Component {
             );
         }
         return (
-            <div className="header-bar">
+            <header className="header-bar">
                 <h1>Traffic's Cool</h1>
                 {logOutButton}
+<<<<<<< HEAD
                 <Link style={{textDecoration: 'none'}}
                 to="/progress">     <button className="logout-button" >Progress</button></Link>
             </div>
+=======
+            </header>
+>>>>>>> 212df45338314560f3e8a6fa48534495eea7fa32
         );
     }
 }

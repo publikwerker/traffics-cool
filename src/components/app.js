@@ -1,12 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
 
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
-import {refreshAuthToken} from '../actions/auth';
+import { refreshAuthToken } from '../actions/auth';
 import AnswerScreen from './answer-screen';
 import ProgressScreen from './progress-screen';
 
@@ -42,14 +42,21 @@ export class App extends React.Component {
 
     render() {
         return (
-            <div className="app">
+            <main className="app">
                 <HeaderBar />
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
+<<<<<<< HEAD
                 <Route exact path="/answer" component={AnswerScreen} />
                 <Route exact path="/register" component={RegistrationPage} />
                 <Route exact path="/progress" component={ProgressScreen} />
             </div>
+=======
+                <Route exact path="/answer"
+                    component={AnswerScreen} />
+                <Route exact path="/register" component={RegistrationPage} />
+            </main>
+>>>>>>> 212df45338314560f3e8a6fa48534495eea7fa32
         );
     }
 }
