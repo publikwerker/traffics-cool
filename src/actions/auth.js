@@ -56,10 +56,11 @@ export const guessRequest = () => ({
 });
 
 export const GUESS_SUCCESS = 'GUESS_SUCCESS';
-export const guessSuccess = (answer, correct) => ({
+export const guessSuccess = (answer, correct, sign) => ({
   type: GUESS_SUCCESS,
   correct,
-  answer
+  answer,
+  sign,
 });
 
 export const GUESS_ERROR = 'GUESS_ERROR';
@@ -160,7 +161,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     });
 };
 
-export const submitGuess = (guess, authToken) => dispatch => {
+export const submitGuess = (guess, authToken, sign) => dispatch => {
   dispatch(guessRequest());
   return fetch(`${API_BASE_URL}/users/guess`, {
     method: 'POST',
@@ -172,7 +173,9 @@ export const submitGuess = (guess, authToken) => dispatch => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ answer, correct }) => dispatch(guessSuccess(answer, correct)))
+    .then(({ answer, correct }) => {
+      return dispatch(guessSuccess(answer, correct, sign));
+    })
     .catch(err => {
       dispatch(guessError(err));
     });
