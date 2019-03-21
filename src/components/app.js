@@ -8,8 +8,7 @@ import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 import AnswerScreen from './answer-screen';
-import {ProgressScreen} from './progress-screen';
-import history from './history';
+import ProgressScreen from './progress-screen';
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
