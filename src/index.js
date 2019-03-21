@@ -5,10 +5,11 @@ import {Provider} from 'react-redux';
 import App from './components/app';
 import store from './store';
 import './index.css';
+import history from './components/history';
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
+        <Router history={history}>
             <App />
         </Router>
     </Provider>,

@@ -69,6 +69,25 @@ export const guessError = error => ({
   error
 });
 
+export const PROGRESS_REQUEST = 'PROGRESS_REQUEST';
+export const progressRequest = () => ({
+  type: PROGRESS_REQUEST
+});
+
+export const PROGRESS_SUCCESS = 'PROGRESS_SUCCESS';
+export const progressSuccess = ( guessesMade, guessesCorrect, learned ) => ({
+  type: PROGRESS_SUCCESS,
+  guessesMade, 
+  guessesCorrect, 
+  learned
+});
+
+export const PROGRESS_ERROR = 'PROGRESS_ERROR';
+export const progressError = error => ({
+  type: PROGRESS_ERROR,
+  error
+});
+
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
@@ -178,5 +197,24 @@ export const submitGuess = (guess, authToken, sign) => dispatch => {
     })
     .catch(err => {
       dispatch(guessError(err));
+    });
+};
+
+export const getProgress = (authToken) => dispatch => {
+  dispatch(progressRequest());
+  return fetch(`${API_BASE_URL}/users/progress`, {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({ guessesMade, guessesCorrect, learned }) => {
+      return dispatch(progressSuccess( guessesMade, guessesCorrect, learned));
+    })
+    .catch(err => {
+      dispatch(progressError(err));
     });
 };

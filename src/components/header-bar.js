@@ -1,8 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {clearAuth} from '../actions/auth';
-import {clearAuthToken} from '../local-storage';
+import { connect } from 'react-redux';
+import { clearAuth } from '../actions/auth';
+import { clearAuthToken } from '../local-storage';
 import './header-bar.css';
+import { Link } from 'react-router-dom';
 
 export class HeaderBar extends React.Component {
     logOut() {
@@ -22,13 +23,16 @@ export class HeaderBar extends React.Component {
             <div className="header-bar">
                 <h1>Traffic's Cool</h1>
                 {logOutButton}
+                <Link style={{textDecoration: 'none'}}
+                to="/progress">     <button className="logout-button" >Progress</button></Link>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    authToken: state.auth.authToken,
 });
 
 export default connect(mapStateToProps)(HeaderBar);

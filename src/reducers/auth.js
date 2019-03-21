@@ -7,6 +7,9 @@ import {
   GUESS_ERROR,
   GUESS_REQUEST,
   GUESS_SUCCESS,
+  PROGRESS_REQUEST,
+  PROGRESS_ERROR,
+  PROGRESS_SUCCESS,
   SIGN_REQUEST,
   SIGN_SUCCESS,
   SIGN_ERROR
@@ -72,6 +75,22 @@ export default function reducer(state = initialState, action) {
       answeredSign: action.sign,
     });
   } else if (action.type === GUESS_ERROR) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error,
+    });
+  }else if (action.type === PROGRESS_REQUEST) {
+    return Object.assign({}, state, {
+      loading: true
+    });
+  } else if (action.type === PROGRESS_SUCCESS) {
+    return Object.assign({}, state, {
+      loading: false,
+      guessesMade: action.guessesMade,
+      guessesCorrect: action.guessesCorrect,
+      learned: action.learned,
+    });
+  } else if (action.type === PROGRESS_ERROR) {
     return Object.assign({}, state, {
       loading: false,
       error: action.error,

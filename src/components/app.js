@@ -8,6 +8,8 @@ import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import {refreshAuthToken} from '../actions/auth';
 import AnswerScreen from './answer-screen';
+import {ProgressScreen} from './progress-screen';
+import history from './history';
 
 export class App extends React.Component {
     componentDidUpdate(prevProps) {
@@ -45,9 +47,9 @@ export class App extends React.Component {
                 <HeaderBar />
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/answer" 
-                component={AnswerScreen} />
+                <Route exact path="/answer" component={AnswerScreen} />
                 <Route exact path="/register" component={RegistrationPage} />
+                <Route exact path="/progress" component={ProgressScreen} />
             </div>
         );
     }
