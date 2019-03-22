@@ -41,6 +41,7 @@ h1 {
   box-shadow: 0 0 0 1px #308446;
   color: white;
   display: inline-block;
+  margin: 0 auto 0.5rem;
   padding: 0.5rem 1rem;
 }
 

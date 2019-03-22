@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './question-screen.css';
 import { Field, reduxForm } from 'redux-form';
 import { getSign, submitGuess } from '../actions/auth.js';
 import Input from './input';
+import './question-screen.css';
 
 export class Questionscreen extends React.Component {
   componentDidMount() {
@@ -22,12 +22,12 @@ export class Questionscreen extends React.Component {
 
     return (
       <form
-        className="questionReducer"
+        className="question"
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
       >
         <fieldset>
           <legend>What is the meaning of this?</legend>
-          <img alt="traffic sign" src={this.props.sign} />
+          <img alt="traffic sign" className="question-image" src={this.props.sign} />
           <Field
             name="guess"
             component={Input}
@@ -37,7 +37,7 @@ export class Questionscreen extends React.Component {
           />
         </fieldset>
         <button
-          className="submit-button"
+          className="btn btn-primary submit-button"
           type="submit"
           disabled={pristine || submitting}
         >Submit</button>
@@ -52,5 +52,5 @@ const mapStateToProps = state => ({
 });
 
 export default reduxForm({
-  form: 'questionReducer'
+  form: 'question'
 })(withRouter(connect(mapStateToProps)(Questionscreen)));
