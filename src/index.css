@@ -11,13 +11,8 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 1rem;
   font-family: 'Overpass', sans-serif;
-}
-div {
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 fieldset {
@@ -90,11 +85,6 @@ p {
   text-transform: uppercase;
 }
 
-.btn:active, .btn:focus, .btn:hover {
-  background-color: black;
-  color: white;
-}
-
 .btn.btn-primary {
   background-color: #308446;
   color: white;
@@ -102,6 +92,16 @@ p {
 
 .btn.btn-secondary {
   background-color: #fad201;
+}
+
+.btn.btn-warning {
+  background-color: #b01c2e;
+  color: white;
+}
+
+.btn:active, .btn:focus, .btn:hover {
+  background-color: black;
+  color: white;
 }
 
 .btn[disabled] {
