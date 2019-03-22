@@ -1,0 +1,31 @@
+.landing {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+@media only screen and (min-width : 1224px) {
+  .landing {
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-template-areas: 
+      "heading heading"
+      "description login"
+      "description register";
+      grid-template-columns: 2fr 1fr;
+      margin: 0 auto;
+      max-width: 60rem;
+  }
+
+  .landing-info {
+    grid-area: description;
+  }
+
+  .landing-register {
+    justify-self: center;
+  }
+
+  .landing-title {
+    grid-area: heading;
+  }
+  }

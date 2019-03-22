@@ -3,6 +3,7 @@ import { Field, reduxForm, focus } from 'redux-form';
 import Input from './input';
 import { login } from '../actions/auth';
 import { required, nonEmpty } from '../validators';
+import './login-form.css';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
@@ -43,7 +44,7 @@ export class LoginForm extends React.Component {
                         validate={[required, nonEmpty]}
                     />
                 </fieldset>
-                <button disabled={this.props.pristine || this.props.submitting}>
+                <button className="btn btn-primary" disabled={this.props.pristine || this.props.submitting}>
                     Log in
                 </button>
             </form>

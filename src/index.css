@@ -4,6 +4,11 @@
 * {
   box-sizing: border-box;
 }
+
+html {
+  font-size: 16px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -15,6 +20,81 @@ div {
   margin-right: auto;
 }
 
+fieldset {
+  border: 0;
+}
+
+form {
+  border: 2px solid black;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
 h1, strong {
   text-transform: uppercase;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h1 {
+  background-color: #308446;
+  border: 2px solid white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 1px #308446;
+  color: white;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
+input {
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  display: block;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+/* Buttons */
+.btn {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 0.25rem;
+  color: black;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn:active, .btn:focus, .btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn.btn-primary {
+  background-color: #308446;
+  color: white;
+}
+
+.btn.btn-secondary {
+  background-color: #fad201;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
 }
