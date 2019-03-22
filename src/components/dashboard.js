@@ -4,12 +4,18 @@ import requiresLogin from './requires-login';
 import Questionscreen from './question-screen.js';
 
 export class Dashboard extends React.Component {
+  greetUser() {
+    return (
+      <header className="dashboard-username">
+        Hello, {this.props.name}!<br /> Below is the next sign for you to identify.
+      </header>
+    );
+  }
+
   render() {
     return (
       <section className="dashboard">
-        <header className="dashboard-username">
-          Hello {this.props.username}!
-        </header>
+        {this.greetUser()}
         <Questionscreen />
       </section>
     );
@@ -19,12 +25,11 @@ export class Dashboard extends React.Component {
 const mapStateToProps = state => {
   const { authToken, error } = state.auth;
   return {
+    name: state.auth.currentUser.name,
     username: state.auth.currentUser.username,
     sign: state.auth.currentSign,
     authToken: authToken,
     error: error,
-    answer: state.auth.answer,
-    correct: state.auth.correct
   };
 };
 
