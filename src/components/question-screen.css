@@ -4,9 +4,8 @@
 
 .question-image {
   display: block;
-  height: auto;
-  max-height: 200px;
-  max-width: 200px;
+  height: 200px;
+  max-width: 100%;
   width: auto;
 }
 
@@ -20,11 +19,7 @@
   border-radius: 10px;
   margin-bottom: 20px;
 }
-img{
-  max-width: 200px;
-  max-height: 200px;
-  min-width: 200px;
-}
+
 label, input, button, img {
   display: block;
   margin-left: auto;
