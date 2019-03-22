@@ -24,22 +24,27 @@ export class ProgressScreen extends React.Component {
   
   render(){
     let masteredList;
-    let percent = (this.props.guessesCorrect/this.props.guessesMade*100).toFixed(1);
-    console.log(this.props.learned);
-      if (isNullOrUndefined(this.props.learned)){
-        masteredList = (<li>You haven't mastered any signs, yet.</li>);
-      } else if (this.props.learned.length === 1){ 
-        masteredList = (<li>You have mastered the {this.props.learned[0].sign} sign.</li>);
-      } else if (this.props.learned.length > 1){ 
-        masteredList = (<li>Signs you have mastered: <br />{this.signList(this.props.learned)}</li>);
-      }
-    console.log(masteredList);
+    let percent;
+    // if they haven't made any guesses
+    if (this.props.guessesMade === 0){
+      percent = (<li>No time to stall. <br />Let's get moving!</li>)
+    } else {
+      percent = (<li>That's {(this.props.guessesCorrect/this.props.guessesMade*100).toFixed(1)} percent right!</li>);
+    }
+    // if the 'learned' array is empty
+    if (isNullOrUndefined(this.props.learned)){
+      masteredList = (<li>You haven't mastered any signs, yet.</li>);
+    } else if (this.props.learned.length === 1){ 
+      masteredList = (<li>You have mastered the {this.props.learned[0].sign} sign.</li>);
+    } else if (this.props.learned.length > 1){ 
+      masteredList = (<li>Signs you have mastered: <br />{this.signList(this.props.learned)}</li>);
+    }
     return (
       <div>
         <ul className="progress-data">
           <li>Out of {this.props.guessesMade} questions,</li>
           <li>You have gotten {this.props.guessesCorrect} correct.</li>
-          <li>That's {percent} percent right!</li>
+          {percent}
           {masteredList}
           <button 
             type="submit"

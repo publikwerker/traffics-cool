@@ -9,6 +9,8 @@ export class HeaderBar extends React.Component {
     logOut() {
         this.props.dispatch(clearAuth());
         clearAuthToken();
+        // keep getting error can't push undefined
+        //return this.props.history.push('/dashboard')
     }
 
     render() {
