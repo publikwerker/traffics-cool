@@ -14,3 +14,11 @@
 ul {
   list-style-type: none;
 }
+ul.li {
+  display: block;
+}
+
+.learned-signs {
+  max-height: 50px;
+  max-width: 50px;
+}
