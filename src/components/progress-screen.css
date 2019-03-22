@@ -17,14 +17,14 @@ ul {
   list-style-type: none;
   list-style: none;
 }
-ul li {
-  display: block;
-}
 
 .learned-signs {
   max-height: 50px;
   max-width: 50px;
+  display: inline;
+  padding: 2px;
 }
+
 .progress-data {
   padding-left: 0;
   margin-left: 0;
