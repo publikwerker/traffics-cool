@@ -7,7 +7,7 @@ export class Dashboard extends React.Component {
   greetUser() {
     return (
       <header className="dashboard-username">
-        Hello, {this.props.name}!<br /> Below is the next sign for you to identify.
+        Hello, {this.props.name.length > 1 ? this.props.name : this.props.username}!<br /> Below is the next sign for you to identify.
       </header>
     );
   }

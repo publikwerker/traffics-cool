@@ -15,6 +15,10 @@ body {
   font-family: 'Overpass', sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 fieldset {
   border: 2px solid black;
   border-radius: 0.25rem;
