@@ -200,7 +200,7 @@ export const submitGuess = (guess, authToken, signImage) => dispatch => {
 };
 
 export const getProgress = (authToken) => dispatch => {
-  dispatch(progressRequest());
+  // dispatch(progressRequest());
   return fetch(`${API_BASE_URL}/users/progress`, {
     method: 'GET',
     headers: {
