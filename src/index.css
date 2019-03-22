@@ -1,5 +1,5 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css?family=Overpass');
+@import url('https://fonts.googleapis.com/css?family=Overpass:400,700');
 
 * {
   box-sizing: border-box;
@@ -69,6 +69,11 @@ legend {
 
 p {
   margin: 0 0 1rem;
+}
+
+.app {
+  margin: 0 auto;
+  max-width: 50rem;
 }
 
 /* Buttons */
