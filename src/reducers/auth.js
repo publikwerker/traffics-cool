@@ -70,8 +70,6 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === GUESS_SUCCESS) {
     return Object.assign({}, state, {
       loading: false,
-      correct: action.correct,
-      answer: action.answer,
       answeredSign: action.sign,
     });
   } else if (action.type === GUESS_ERROR) {
@@ -79,7 +77,7 @@ export default function reducer(state = initialState, action) {
       loading: false,
       error: action.error,
     });
-  }else if (action.type === PROGRESS_REQUEST) {
+  } else if (action.type === PROGRESS_REQUEST) {
     return Object.assign({}, state, {
       loading: true
     });

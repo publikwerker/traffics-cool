@@ -56,10 +56,8 @@ export const guessRequest = () => ({
 });
 
 export const GUESS_SUCCESS = 'GUESS_SUCCESS';
-export const guessSuccess = (answer, correct, sign) => ({
+export const guessSuccess = (sign) => ({
   type: GUESS_SUCCESS,
-  correct,
-  answer,
   sign,
 });
 
@@ -75,10 +73,10 @@ export const progressRequest = () => ({
 });
 
 export const PROGRESS_SUCCESS = 'PROGRESS_SUCCESS';
-export const progressSuccess = ( guessesMade, guessesCorrect, learned ) => ({
+export const progressSuccess = (guessesMade, guessesCorrect, learned) => ({
   type: PROGRESS_SUCCESS,
-  guessesMade, 
-  guessesCorrect, 
+  guessesMade,
+  guessesCorrect,
   learned
 });
 
@@ -180,7 +178,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     });
 };
 
-export const submitGuess = (guess, authToken, sign) => dispatch => {
+export const submitGuess = (guess, authToken, signImage) => dispatch => {
   dispatch(guessRequest());
   return fetch(`${API_BASE_URL}/users/guess`, {
     method: 'POST',
@@ -192,8 +190,9 @@ export const submitGuess = (guess, authToken, sign) => dispatch => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(({ answer, correct }) => {
-      return dispatch(guessSuccess(answer, correct, sign));
+    .then(({ sign }) => {
+      sign.image = signImage;
+      return dispatch(guessSuccess(sign));
     })
     .catch(err => {
       dispatch(guessError(err));
@@ -212,7 +211,7 @@ export const getProgress = (authToken) => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({ guessesMade, guessesCorrect, learned }) => {
-      return dispatch(progressSuccess( guessesMade, guessesCorrect, learned));
+      return dispatch(progressSuccess(guessesMade, guessesCorrect, learned));
     })
     .catch(err => {
       dispatch(progressError(err));
