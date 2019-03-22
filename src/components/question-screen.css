@@ -9,9 +9,10 @@
   margin-bottom: 20px;
 }
 img{
-  max-width: 75%;
+  max-width: 200px;
+  max-height: 200px;
 }
-label, input, button {
+label, input, button, img {
   display: block;
   margin-left: auto;
   margin-right: auto;
