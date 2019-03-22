@@ -2,6 +2,7 @@ import React from 'react';
 import './progress-screen.css';
 import { connect } from 'react-redux';
 import { getProgress } from '../actions/auth';
+import requiresLogin from './requires-login';
 
 export class ProgressScreen extends React.Component {
   componentDidMount() {
@@ -56,4 +57,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ProgressScreen);
+export default requiresLogin()(connect(mapStateToProps)(ProgressScreen));
