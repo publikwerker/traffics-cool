@@ -5,6 +5,8 @@ This is Jason Hoffman and Derek Houck's Spaced Repetition project.
 You can view the live app at https://traffics-cool.herokuapp.com/. 
 The server can be found at https://github.com/thinkful-ei27/jason-derek-spaced-repetition-server.
 
+![trafficsCoolMock](https://user-images.githubusercontent.com/42702189/56334898-2013f400-614f-11e9-9b18-dced582629e1.jpg)
+
 The project goal was to devise an app to help users learn a language through the use of spaced repetition.
 We chose to use a common visual language: that of traffic signage in the US.
 Once they are registered, users are able to test themselves on their road sign knowledge. The app tracks their progress and score.
