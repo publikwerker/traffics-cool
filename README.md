@@ -1,9 +1,8 @@
-# Jason and Derek's Spaced Repetition Server
 # Traffic's Cool
 
 This is Jason Hoffman and Derek Houck's Spaced Repetition project. 
 You can view the live app at https://traffics-cool.herokuapp.com/. 
-The server can be found at https://github.com/thinkful-ei27/jason-derek-spaced-repetition-server.
+The server can be found at https://github.com/thinkful-ei27/traffics-cool-api.
 
 ![trafficsCoolMock](https://user-images.githubusercontent.com/42702189/56334898-2013f400-614f-11e9-9b18-dced582629e1.jpg)
 
