@@ -1,6 +1,11 @@
 # Traffic's Cool
 
 This is Jason Hoffman and Derek Houck's Spaced Repetition project. 
+A learning app designed to teach individuals the meaning of common US traffic signs. 
+Try it out! 
+username: test, 
+password: Password123
+
 You can view the live app at https://www.traffics.cool/. 
 The server can be found at https://github.com/derekhouck/traffics-cool-api.
 
@@ -11,7 +16,7 @@ We chose to use a common visual language: that of traffic signage in the US.
 Once they are registered, users are able to test themselves on their road sign knowledge. The app tracks their progress and score.
 
 This application allows users to test and expand their knowledge of road signs, and helps them to become better and safer drivers.
-	Although there are a few traffic-sign-related apps on the market, ours is the only one to implement spaced repetition in the learning process. While other apps offer mere “flash cards”, Traffic’s Cool keeps track of their progress, and it is able to help the user focus on the signs they are least familiar with.
+	Although there are a few traffic-sign-related apps on the market, ours is the only one to implement spaced repetition in the learning process. While other apps offer mere “flash cards”, Traffic’s Cool keeps track of their progress using a spaced repetition algorithm, and it is able to help the user focus on the signs they are least familiar with.
 	
 
 ### Technology Stack
