@@ -1,12 +1,17 @@
 # Traffic's Cool
 
 This is Jason Hoffman and Derek Houck's Spaced Repetition project. 
-A learning app designed to teach individuals the meaning of common US traffic signs. 
+
+Traffic's Cool is a learning app designed to teach individuals the meaning of common US traffic signs. 
+
 Try it out! 
+
 username: test, 
+
 password: Password123
 
 You can view the live app at https://www.traffics.cool/. 
+
 The server can be found at https://github.com/derekhouck/traffics-cool-api.
 
 ![trafficsCoolMock](https://user-images.githubusercontent.com/42702189/56334898-2013f400-614f-11e9-9b18-dced582629e1.jpg)
