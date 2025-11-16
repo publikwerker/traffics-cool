@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "mocha": "^6.0.2",
-    "react-scripts": "2.1.8"
+    "mocha": "^11.7.5",
+    "react-scripts": "5.0.1"
   },
   "dependencies": {
     "enzyme": "^3.9.0",
